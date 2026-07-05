@@ -1,0 +1,16 @@
+Generic single-database configuration.
+
+Schema is owned by Alembic (not Base.metadata.create_all, not the old
+app/migrate.py guarded-ALTER-TABLE script — retired 2026-07-04).
+
+- Fresh install (no database.sqlite yet): run `alembic upgrade head` before
+  starting the app — this creates every table from scratch. docker-entrypoint.sh
+  does this automatically in containers.
+- Existing install (a database.sqlite that predates Alembic, i.e. anything
+  from before this migration): run `alembic stamp head` ONCE instead — this
+  records the baseline migration as already-applied without re-running its
+  `CREATE TABLE` statements against tables that already exist. The repo's own
+  database.sqlite has already been stamped this way.
+
+Any schema change from here on gets its own `alembic revision --autogenerate`
+migration, applied via `alembic upgrade head` on every install.

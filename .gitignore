@@ -1,3 +1,20 @@
-database.sqlite
-package-lock.json
+/backend/db/*.db*
+/backend/db/backups/
+!/backend/db/.gitkeep
+*.sqlite.bak*
 node_modules/
+dist/
+/build
+.env
+.claude/
+
+# Test artifacts
+backend/.coverage
+frontend/coverage/
+
+# Python (backend)
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
