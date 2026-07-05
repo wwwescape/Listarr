@@ -1,0 +1,15 @@
+node_modules
+build
+backend/venv
+backend/database.sqlite
+backend/.coverage
+frontend/dist
+frontend/coverage
+**/__pycache__
+.git
+.claude
+.env
+Dockerfile
+.dockerignore
+.gitignore
+README.md
